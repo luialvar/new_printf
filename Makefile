@@ -6,60 +6,73 @@
 #    By: luialvar <luialvar@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/27 16:47:08 by luialvar          #+#    #+#              #
-#    Updated: 2024/07/31 12:05:29 by luialvar         ###   ########.fr        #
+#    Updated: 2024/07/31 13:44:12 by luialvar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Nombre del archivo de la biblioteca
+# Nombre del archivo que se generará
 NAME = libftprintf.a
 
-# Rutas y archivos de la biblioteca libft
-LIBFT_DIR = ./libft
-LIBFT = $(LIBFT_DIR)/libft.a
+# Rutas y archivos necesarios
+LIB_PATH = ./libft
+LIBFT = $(LIB_PATH)/libft.a
 
-# Archivos fuente de ft_printf
-SRCS = ft_printf.c \
-       ft_arg_c.c \
-       ft_arg_s.c \
-       ft_arg_p.c \
-       ft_arg_d_i.c \
-       ft_arg_u.c \
-       ft_arg_x.c \
-       ft_arg_perc.c
-
-# Generar los nombres de los archivos objeto a partir de los archivos fuente
-OBJ = $(SRCS:.c=.o)
-
-# Compilador y flags
+# Compilador y banderas de compilación
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Werror -Wextra
 
-# Comando para crear la biblioteca
-LIB = ar rcs
+# Comando para eliminar archivos
+REMOVE = rm -f
 
+# Incluir directorios
+INCLUDE = -I ./libft
+
+# Directorio y archivos fuente 
+SRCS_PATH = ./printf
+SRCS = $(SRCS_PATH)/ft_printf.c \
+       $(SRCS_PATH)/ft_arg_c.c \
+       $(SRCS_PATH)/ft_arg_s.c \
+       $(SRCS_PATH)/ft_arg_p.c \
+       $(SRCS_PATH)/ft_arg_d_i.c \
+       $(SRCS_PATH)/ft_arg_u.c \
+       $(SRCS_PATH)/ft_arg_x.c \
+       $(SRCS_PATH)/ft_arg_perc.c
+
+# Archivos objeto generados a partir de los archivos fuente
+OBJS = $(SRCS:.c=.o)
+
+# Regla principal
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
-	cp $(LIBFT) $(NAME)
-	$(LIB) $(NAME) $(OBJ)
-	echo "srcs = $(SRCS)"
-	echo "obj = $(OBJ)"
+# Regla para crear el archivo de biblioteca
+$(NAME): $(OBJS) $(LIBFT)
+	ar -rcs $(NAME) $(OBJS)
 
+# Regla para compilar libft y copiar el archivo libft.a
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+	make -C $(LIB_PATH)
+	cp $(LIBFT) $(NAME)
 
-# Compilación de archivos .o
-$(OBJ): %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+# Regla para compilar los archivos objeto
+.c.o:
+	$(CC) -c $(CFLAGS) $< -o ${<:.c=.o} $(INCLUDE)
 
+# Limpiar los archivos objeto
 clean:
-	rm -f $(OBJ)
-	$(MAKE) clean -C $(LIBFT_DIR)
+	make clean -C $(LIB_PATH)
+	$(REMOVE) $(OBJS)
 
-fclean: clean
-	rm -rf $(NAME)
-	$(MAKE) fclean -C $(LIBFT_DIR)
+# Limpiar todos los archivos generados
+fclean:
+	make fclean -C $(LIB_PATH)
+	$(REMOVE) $(OBJS)
+	$(REMOVE) $(NAME)
 
+# Regenerar todo
 re: fclean all
 
-.PHONY: all clean fclean re
+# Norminette
+norm:
+	norminette
+
+.PHONY: re all clean fclean norm
