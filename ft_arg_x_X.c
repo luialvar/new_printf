@@ -6,7 +6,7 @@
 /*   By: luialvar <luialvar@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 12:34:32 by luialvar          #+#    #+#             */
-/*   Updated: 2024/07/31 10:05:32 by luialvar         ###   ########.fr       */
+/*   Updated: 2024/07/31 10:41:45 by luialvar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,12 @@ static int	ft_reverse_str(char *str)
 	bytes = ft_strlen(str);
 	i = bytes - 1;
 	while (i >= 0)
-		write(1, &str[i--], sizeof(char) * 1);
+	{
+		write(1, &str[i], sizeof(char) * 1);
+		i--;
+	}
 	return (bytes);
 	}
-
-void	ft_free_ptr(char **ptr)
-{
-	free(*ptr);
-	*ptr = NULL;
-}
 
 int	ft_arg_x_X(unsigned int nbr, char type)
 {
@@ -88,6 +85,7 @@ int	ft_arg_x_X(unsigned int nbr, char type)
 	}
 	num[i] = '\0';
 	bytes = ft_reverse_str(num);
-	ft_free_ptr(&num);
+	free(num);
+	num = NULL;
 	return (bytes);
 }
