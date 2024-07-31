@@ -6,7 +6,7 @@
 /*   By: luialvar <luialvar@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 13:12:02 by luialvar          #+#    #+#             */
-/*   Updated: 2024/07/31 10:42:12 by luialvar         ###   ########.fr       */
+/*   Updated: 2024/07/31 11:40:14 by luialvar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int		ft_arg_s(char *s);
 int		ft_arg_u(unsigned int nbr);
 int		ft_arg_d_i(int c);
 int		ft_arg_p(unsigned long nbr);
-int		ft_arg_x_X(unsigned int nbr, char type);
+int		ft_arg_x(unsigned int nbr, char type);
 
 #endif

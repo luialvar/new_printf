@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arg_x_X.c                                       :+:      :+:    :+:   */
+/*   ft_arg_x.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luialvar <luialvar@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 12:34:32 by luialvar          #+#    #+#             */
-/*   Updated: 2024/07/31 10:41:45 by luialvar         ###   ########.fr       */
+/*   Updated: 2024/07/31 11:39:47 by luialvar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ static int	ft_reverse_str(char *str)
 		i--;
 	}
 	return (bytes);
-	}
+}
 
-int	ft_arg_x_X(unsigned int nbr, char type)
+int	ft_arg_x(unsigned int nbr, char type)
 {
 	char	*num;
 	int		bytes;
