@@ -6,7 +6,7 @@
 #    By: luialvar <luialvar@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/27 16:47:08 by luialvar          #+#    #+#              #
-#    Updated: 2024/07/27 16:47:15 by luialvar         ###   ########.fr        #
+#    Updated: 2024/07/31 12:05:29 by luialvar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,9 @@ SRCS = ft_printf.c \
        ft_arg_c.c \
        ft_arg_s.c \
        ft_arg_p.c \
-       ft_arg_d.c \
-       ft_arg_i.c \
+       ft_arg_d_i.c \
        ft_arg_u.c \
        ft_arg_x.c \
-       ft_arg_X.c \
        ft_arg_perc.c
 
 # Generar los nombres de los archivos objeto a partir de los archivos fuente
