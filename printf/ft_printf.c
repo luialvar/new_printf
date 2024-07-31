@@ -6,7 +6,7 @@
 /*   By: luialvar <luialvar@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 13:13:27 by luialvar          #+#    #+#             */
-/*   Updated: 2024/07/31 12:09:47 by luialvar         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:51:04 by luialvar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_checker(va_list vargs, char c)
 	if (c == 'u')
 		n_bytes += ft_arg_u(va_arg(vargs, unsigned int));
 	if (c == 'X' || c == 'x')
-		n_bytes += ft_arg_x_X(va_arg(vargs, unsigned int), c);
+		n_bytes += ft_arg_x(va_arg(vargs, unsigned int), c);
 	if (c == '%')
 		n_bytes += ft_arg_perc();
 	return (n_bytes);
